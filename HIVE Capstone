@@ -1,0 +1,36 @@
+CREATE EXTERNAL TABLE campaign(
+click_flg	STRING,
+open_flg 	STRING,	
+asian_cd	STRING,
+gndr_chld_3 	STRING,
+gndr_chld_12	STRING,
+gndr_chld_18	STRING,
+gndr_chld_6	STRING,
+gndr_chld_9	STRING,
+gndr_code	STRING,
+indiv_status_code	STRING,
+chldnum	INT,
+preschld	STRING,
+hh_income	STRING,
+statcd_hh_mem1	STRING,	
+statcd_hh_mem2	STRING,
+statcd_hh_mem3	STRING,
+statcd_hh_mem4	STRING,
+statcd_hh_mem5	STRING,
+statcd_hh_mem6	STRING,
+statcd_hh_mem7	STRING,
+statcd_hh_mem8	STRING,
+city	STRING,
+postal_code	BIGINT,
+state	STRING,
+weekday	STRING,
+month 	STRING,
+date	STRING,
+year	STRING,
+time	STRING,
+ampm	STRING
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '\t'
+LINES TERMINATED BY '\n'
+LOCATION '/user/Jig15435/CampaignData';
