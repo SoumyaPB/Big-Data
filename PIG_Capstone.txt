@@ -1,0 +1,38 @@
+cd = load 'CampaignData_full.csv' using PigStorage(',');
+
+impcdata = foreach cd generate 
+	$0 as click_flg,
+	$1 as open_flg,
+	$4 as asian_cd,
+	$50 as gndr_chld_3,
+	$51 as gndr_chld_12,
+	$52 as gndr_chld_18,
+	$53 as gndr_chld_6,
+	$54 as gndr_chld_9,
+	$60 as gender_code,
+	$61 as indiv_status_code,
+	$76 as chldnum,
+	$92 as chldpres,
+	$101 as total_income,
+	$125 as statcd_hh_mem1,
+	$126 as statcd_hh_mem2,
+	$127 as statcd_hh_mem3,
+	$128 as statcd_hh_mem4,
+	$129 as statcd_hh_mem5,
+	$130 as statcd_hh_mem6,
+	$131 as statcd_hh_mem7,
+	$132 as statcd_hh_mem8,
+	$261 as city,
+	$262 as postal_code,
+	$263 as state,
+	SUBSTRING($272,1,4) as mailed_day,
+	SUBSTRING($273,1,3) as mailed_month,
+	SUBSTRING($273,4,6) as mailed_date,
+	SUBSTRING($273,7,9) as mailed_year,
+	SUBSTRING($273,11,15) as mailed_time,
+	SUBSTRING($273,16,18) as time_ampm;
+	
+store impcdata into 'CampaignData' using PigStorage('\t');
+
+	hadoop fs –copyFromLocal '/home/data/CampaignData_full.csv' '/user/Jig15435/CampaignData/'
+
